@@ -5,3 +5,14 @@
 body {
   background-color: #282828;
 }
+
+.slick-prev {
+  top: -40px !important;
+  right: 100px !important;
+  left: auto !important;
+}
+
+.slick-next {
+  top: -40px !important;
+  right: 60px !important;
+}
