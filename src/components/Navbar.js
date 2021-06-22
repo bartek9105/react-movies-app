@@ -1,6 +1,7 @@
 import { Logo } from '../components/Logo'
 import { Searchbar } from '../components/Searchbar'
 import { UserAvatar } from '../components/UserAvatar'
+import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ export const Navbar = () => {
       <div className="flex items-center">
         <Logo />
         <ul className="flex ml-16">
-          <li className="mr-12 cursor-pointer text-white hover:text-red-600 transition delay-100 ease-in-out">Movies</li>
+          <NavLink exact to="/" activeClassName="text-red-600" className="mr-12 cursor-pointer text-white hover:text-red-600 transition delay-100 ease-in-out">Movies</NavLink>
           <li className="mr-12 cursor-pointer text-white hover:text-red-600 transition delay-100 ease-in-out">TV Shows</li>
           <li className="cursor-pointer text-white hover:text-red-600 transition delay-100 ease-in-out">Actors</li>
         </ul>
