@@ -2,17 +2,18 @@ import { Navbar } from './components/Navbar'
 import { useFetch } from './hooks/useFetch'
 import { MoviesList } from './components/MoviesList'
 
-const url = 'https://api.themoviedb.org/3/movie/popular?api_key=804c3863f43ac032ec694ff81f291705&language=en-US&page=1'
-
-
 function App() {
-  const { data } = useFetch(url)
+  const { data: topRatedMovies } = useFetch('top_rated')
+  const { data: upcomingMovies } = useFetch('upcoming')
+  const { data: popularMovies } = useFetch('popular')
 
   return (
     <>
       <Navbar />
       <div className="max-w-screen-2xl mx-auto pt-16">
-        <MoviesList movies={data} />
+        <MoviesList movies={topRatedMovies} title="Top rated" />
+        <MoviesList movies={upcomingMovies} title="Upcoming" />
+        <MoviesList movies={popularMovies} title="Popular" />
       </div>
     </>
   );
