@@ -9,7 +9,7 @@ export const MoviesList = ({ movies, title }) => {
     slidesToShow: 6
   }
   return (
-    <section className="mb-16">
+    <section className="mb-24">
       <h2 className="text-xl font-bold mb-8 text-gray-100">{title}</h2>
       <Slider {...settings}>
         {movies.map(movie => <MovieItem {...movie} key={movie.id} />)}

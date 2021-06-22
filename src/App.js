@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="max-w-screen-2xl mx-auto pt-16">
+      <div className="max-w-screen-2xl mx-auto pt-8">
         <MoviesList movies={topRatedMovies} title="Top rated" />
         <MoviesList movies={upcomingMovies} title="Upcoming" />
         <MoviesList movies={popularMovies} title="Popular" />
