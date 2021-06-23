@@ -8,14 +8,16 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/movie/:id">
-            <MovieDetails />
-          </Route>
-        </Switch>
+        <div className="max-w-screen-2xl mx-auto pt-8">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/movie/:id">
+              <MovieDetails />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </>
   );

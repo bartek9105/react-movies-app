@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 
 
-export const useFetch = (type) => {
-  const url = `https://api.themoviedb.org/3/movie/${type}?api_key=804c3863f43ac032ec694ff81f291705&language=en-US`
+export const useFetch = (url) => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -15,9 +14,30 @@ export const useFetch = (type) => {
 
   useEffect(() => {
     fetchData()
-  }, [type])
+  }, [url])
+
+  return { data, loading }
+}
+
+export const useFetchMovieDetails = (movieId) => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=804c3863f43ac032ec694ff81f291705&language=en-US`
+  const { data, loading } = useFetch(url)
+
+  return { data, loading }
+}
+
+export const useFetchMoviesType = (movieType) => {
+  const url = `https://api.themoviedb.org/3/movie/${movieType}?api_key=804c3863f43ac032ec694ff81f291705&language=en-US`
+  const { data, loading } = useFetch(url)
 
   return { data, loading }
 
+}
+
+export const useFetchMoviesTypeById = (movieId, movieType) => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/${movieType}?api_key=804c3863f43ac032ec694ff81f291705&language=en-US`
+  const { data, loading } = useFetch(url)
+
+  return { data, loading }
 }
 
