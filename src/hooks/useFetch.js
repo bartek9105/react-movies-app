@@ -48,3 +48,9 @@ export const useFetchMoviesByGenreId = (genreId) => {
   return { data, loading }
 }
 
+export const useFetchByQuery = (query) => {
+  const url = `https://api.themoviedb.org/3/search/multi?api_key=804c3863f43ac032ec694ff81f291705&language=en-US&query=${query}&page=1&include_adult=false`
+  const { data, loading } = useFetch(url)
+
+  return { data, loading }
+}
