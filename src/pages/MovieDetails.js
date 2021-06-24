@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useFetchMovieDetails, useFetchMoviesTypeById } from '../hooks/useFetch'
 import { MoviesList } from "../components/MoviesList"
 import { CastList } from "../components/CastList"
@@ -20,7 +20,10 @@ export const MovieDetails = () => {
           <div>
             <div className="flex mb-2">
               <h1 className="font-bold text-2xl mr-6">{movie.title}</h1>
-              <div className="inline-block bg-gray-700 px-4 py-1 rounded-xl">{movie.genres[0]?.name}</div>
+              <Link to={{
+                pathname: `/movies/genre/${movie.genres[0].id}`,
+                state: { genreName: movie.genres[0]?.name }
+              }} className="inline-block bg-gray-700 px-4 py-1 rounded-xl">{movie.genres[0]?.name}</Link>
             </div>
             <p className="text-gray-300 mb-8">{movie.tagline}</p>
             <h3 className="font-bold text-lg mb-4">Overview</h3>
@@ -58,7 +61,6 @@ export const MovieDetails = () => {
                 <span className="font-bold mr-2">Vote Count: </span>
                 <span>{movie.vote_count}</span>
               </div>
-
             </div>
           </div>
         </section>
