@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useFetchMovieDetails, useFetchMoviesTypeById } from '../hooks/useFetch'
 import { MoviesList } from "../components/MoviesList"
 import { CastList } from "../components/CastList"
+import { ReviewsList } from "../components/ReviewsList"
 
 export const MovieDetails = () => {
   const { id } = useParams()
@@ -9,8 +10,9 @@ export const MovieDetails = () => {
   const { data: similarMovies, loading: loadingSimilar } = useFetchMoviesTypeById(id, 'similar')
   const { data: recommendedMovies, loading: loadingRecommended } = useFetchMoviesTypeById(id, 'recommendations')
   const { data: cast, loading: loadingCast } = useFetchMoviesTypeById(id, 'credits')
+  const { data: reviews, loading: loadingReviews } = useFetchMoviesTypeById(id, 'reviews')
   const imgUrl = `http://image.tmdb.org/t/p/w342${movie.poster_path}`
-  if (!loading && !loadingSimilar && !loadingRecommended && !loadingCast) {
+  if (!loading && !loadingSimilar && !loadingRecommended && !loadingCast && !loadingReviews) {
     return (
       <>
         <section className="flex text-gray-100 mb-16">
@@ -60,6 +62,7 @@ export const MovieDetails = () => {
             </div>
           </div>
         </section>
+        <ReviewsList {...reviews} />
         <CastList {...cast} title="Cast" />
         <MoviesList {...similarMovies} title="Similar movies" loading={loadingSimilar} />
         <MoviesList {...recommendedMovies} title="Recommended movies" loading={loadingRecommended} />
